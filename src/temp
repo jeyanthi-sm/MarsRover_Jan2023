@@ -1,0 +1,428 @@
+
+export class plateauexample extends coordinates 
+{
+  //  startRange!: coordinates;
+   // endRange!: coordinates;
+
+    plateauexample(startRange?:coordinates,
+            endRange?:coordinates);
+    {
+        this.startRange = startRange;
+                this.endRangeXCoordinates = endRangeXCoordinates || 0;
+        this.endRangeYCoordinates = endRangeYCoordinates || 0;
+    }
+
+};
+const prompt = require('prompt-sync')();
+
+/*
+export function add(x: number, y: number): number {
+    return x + y;
+}
+*/
+
+
+export interface coordinates {
+    xcoordinates:number;
+    ycoordinates:number;
+  //  constructor(xcoordinates: number, ycoordinates: number): { xcoordinates: number, ycoordinates: number };
+}
+
+
+export class coordinates //implements coordinates 
+{
+    //coordinates();
+    coordinates(xcoordinates?:number, ycoordinates?:number)
+    {
+        this.xcoordinates = xcoordinates||0;
+        this.ycoordinates = ycoordinates||0;
+    }
+    
+}{
+  //  xcoordinates: number = 0;
+  //  ycoordinates: number = 0;
+
+};
+
+let mycordinates = new coordinates ();
+
+mycordinates.xcoordinates = 7;
+mycordinates.ycoordinates = 7;
+
+console.log(mycordinates);
+
+
+export class plateau //extends coordinates 
+{
+    startRangeXCoordinates!: number;
+    startRangeYCoordinates!: number;
+    endRangeXCoordinates!: number;
+    endRangeYCoordinates!: number;
+
+    plateau(startRangeXcoordinates?:number, startRangeYCoordinates?:number,
+            endRangeXCoordinates?:number, endRangeYCoordinates?:number)
+    {
+        this.startRangeXCoordinates = startRangeXcoordinates||0;
+        this.startRangeYCoordinates = startRangeYCoordinates||0;
+        this.endRangeXCoordinates = endRangeXCoordinates || 0;
+        this.endRangeYCoordinates = endRangeYCoordinates || 0;
+    }
+
+};
+//let marsPlateau : plateau = {} as plateau;
+//let marsPlateau = new plateau() ;
+
+let marsPlateau = new plateau() ;
+
+
+marsPlateau.startRangeXCoordinates = 0;
+marsPlateau.startRangeYCoordinates = 0;
+marsPlateau.endRangeXCoordinates = 7;
+marsPlateau.endRangeYCoordinates = 7;
+console.log(marsPlateau);
+/*
+function clear(addTopBorder: boolean): void {
+    console.clear();
+    if (addTopBorder) {
+        console.log('------------------------------------');
+        console.log();
+    }
+}
+
+
+export function welcomeScreen(): void {
+    clear(true);
+    console.log('--------------------------');
+    console.log('  Welcome to Mars land!   ');
+    console.log('--------------------------');
+}
+
+welcomeScreen();
+
+*/
+/*setPlateauCoordinates({{startCoordinates:{xcoordinates:0,ycoordinates:0}},
+                      {endCoordinates:{xcoordinates:7,ycoordinates:5}}});
+
+  let roverWhereAboutsCurrent: roverWhereAbouts; //= {} as roverWhereAbouts;*/
+//const plateauEndCoordinates =
+function askPlateauEndCoordinates(): void {
+
+    let rettypeStart = {} as coordinates;
+    let rettypeEnd = {} as coordinates;
+    const x = prompt('Enter The X Coordinates <= 7 ');
+    if (!inputValidation(x))
+        endMarsRover();
+    const y = prompt('Enter The Y Coordinates <= 7 ');
+    if (!inputValidation(y))
+        endMarsRover();
+
+
+    rettypeEnd.xcoordinates = x;
+    rettypeEnd.ycoordinates = y;
+    rettypeStart.xcoordinates = 0;
+    rettypeStart.ycoordinates = 0;
+    console.log(rettypeStart);
+    console.log(rettypeEnd);
+    setPlateauCoordinates(0,0,x,y);
+    //return rettype;
+    
+}
+function setPlateauCoordinates(startXCoordinates:number, startYCoordinates:number,
+    endXCoordinates:number, endYCoordinates:number):void
+{
+    //marsPlateau:plateau = {startRange:startCoordinates,endRange:endCoordinates};
+    marsPlateau.startRangeXCoordinates = startXCoordinates;
+    marsPlateau.startRangeYCoordinates = startYCoordinates;
+    marsPlateau.endRangeXCoordinates = endXCoordinates;
+    marsPlateau.endRangeYCoordinates = endYCoordinates;
+}
+
+
+/*
+function setRoverWhereAbouts(startCoordinates:coordinates, facingDirection:directions):void
+{
+    roverWhereAboutsCurrent.coordinates!.xcoordinates = startCoordinates.xcoordinates;
+    roverWhereAboutsCurrent.coordinates!.ycoordinates = startCoordinates.ycoordinates;
+    roverWhereAboutsCurrent.facingDirection = facingDirection;
+    
+}
+
+
+function setRoverFacingDirection(inpFacingDirection:directions):void
+{
+    roverWhereAboutsCurrent.facingDirection = inpFacingDirection;    
+}
+*/
+export function endMarsRover(): void {
+    console.log('***************************************');
+    console.log('You did not make it through Marsland. 😭');
+    const restartMars = prompt('Press ENTER to restart! ');
+    if (restartMars === 'Y' || restartMars === 'y') 
+        console.log('eerere');
+       //askPlateauEndCoordinates();
+    else
+      console.log('ended marsrover');
+}
+
+
+function inputValidation(inp: string): boolean {
+    const typeinp = parseInt(inp);
+
+
+    if (isNaN(typeinp)) {
+        console.log(`😮`);
+        console.log(`That's not a number 😭`);
+        return false;
+    }
+    if (typeinp > 7) {
+        console.log('Enter a number <= 7');
+    }
+      
+    return true;
+}
+
+
+
+export function printPlateauCoordinates() {
+    //clear(true);
+    console.log('--------------------------')
+    console.log('   Plateau Coordinates   ')
+    console.log(marsPlateau.startRangeXCoordinates);
+    console.log(marsPlateau.startRangeYCoordinates);
+    console.log(marsPlateau.endRangeXCoordinates);
+    console.log(marsPlateau.endRangeYCoordinates);
+    console.log('--------------------------');
+}
+
+/*export function getPlateauEndCoordinates1(inpPlateau: plateau): coordinates {
+    return {xcoordinates:inpPlateau.endRangeXCoordinates,ycoordinates:inpPlateau.endRangeYCoordinates};
+}
+
+export function getPlateauEndCoordinates(): coordinates {
+    return marsPlateau.endRange!;
+}
+*/
+
+export function getPlateauCoordinates():plateau {
+    return marsPlateau;
+}
+
+//to run console application uncomment the below line
+const plateauEndCoordinates = askPlateauEndCoordinates();
+
+/*Rover ===============*/
+/*
+interface directions {
+    key:string;
+}
+class directions implements directions{
+    key!:string;
+}
+
+//const myDirections = new directions('N', 'S', 'E', 'W') ;
+//type direction = typeof directions[number];
+
+export interface roverWhereAbouts {
+    coordinates?: coordinates,
+    facingDirection?: directions;
+};
+
+/*function inputValidationDirection(inp: string): boolean {
+    const typeinp = parseInt(inp);
+    if (inputValidation(inp)) {
+        if (typeinp < 0 || typeinp > directions.length - 1) {
+            console.log(`😮`);
+            console.log(`${typeinp} is an invalid number 😭`);
+            return false;
+        }
+    }
+    return true;
+}
+
+function inputValidationInstructions(inp: string): boolean {
+    const strPattern = new RegExp(/^[lrm]+$/,'gi');
+    const matchPattern = strPattern.test(inp);
+    return matchPattern;
+}
+/*
+function askRoverWhereAbouts(): void {
+
+    //let retRoverWhereAbouts = {} as roverWhereAbouts;
+    const xcoordinates = prompt(`Enter The Rover X Coordinates <= ${marsPlateau.endRange?.xcoordinates} `);
+    if (!inputValidation(xcoordinates))
+        endMarsRover();
+
+    const ycoordinates = prompt(`Enter The Rover Y Coordinates <= ${marsPlateau.endRange?.ycoordinates} `);
+    if (!inputValidation(ycoordinates))
+        endMarsRover();
+
+  /*  directions.forEach((dir, i) => console.log(`direction ${dir} is ${i}`)); */
+//    const facingDirection = prompt(`Enter The Rover facing Direction`);
+ /*   if (!inputValidationDirection(facingDirection))
+        endMarsRover();
+
+    setRoverWhereAbouts({xcoordinates,ycoordinates},facingDirection);
+   
+   // retRoverWhereAbouts.coordinates = { xcoordinates, ycoordinates };
+   // retRoverWhereAbouts.facingDirection = facingDirection;
+
+    //return retRoverWhereAbouts;
+}
+
+
+
+export function printRoverWhereAbouts(): void {
+    console.log('    Rover WhereAbouts    ');
+    console.log(roverWhereAboutsCurrent.coordinates);
+    console.log(roverWhereAboutsCurrent.facingDirection);
+    //const direc = Number(roverWhereAboutsCurrent.facingDirection);
+    //console.log(directions[direc]);
+    console.log('--------------------------');
+}
+
+export function getRoverWhereAboutsInp(inpRoverWhereAbouts: roverWhereAbouts): roverWhereAbouts {
+    return inpRoverWhereAbouts;
+}
+
+
+export function getRoverWhereAbouts(): roverWhereAbouts {
+    return roverWhereAboutsCurrent;
+
+    /*let retRoverCoordinates = {} as coordinates;
+    let currroverWhereAbouts = {} as roverWhereAbouts;
+    currroverWhereAbouts = getRoverWhereAbouts();
+    retRoverCoordinates = currroverWhereAbouts.coordinates as coordinates;
+    return retRoverCoordinates;
+    
+}
+
+export function getRoverFacingDirection(): directions {
+    return roverWhereAboutsCurrent.facingDirection!;
+    //const direc = Number(roverWhereAboutsCurrent.facingDirection);
+    //return directions[direc];
+}
+/*export function setRoverFacingDirection(inpDirection:string) {
+    const direc = Number(roverWhereAboutsCurrent.facingDirection);
+    roverWhereAboutsCurrent.facingDirection = 'N';
+    directions[direc];
+}
+//let roverWhereAbouts = {} as roverWhereAbouts = askRoverWhereAbouts();
+//let roverWhereAboutscur = askRoverWhereAbouts();
+clear(true);
+
+printPlateauCoordinates();
+printRoverWhereAbouts();
+
+
+function askRoverInstructions(): roverWhereAbouts {
+
+    let retRoverWhereAbouts = {} as roverWhereAbouts;
+    const roverInstructions = prompt(`Enter The Rover Instructions `);
+    if (!inputValidationInstructions(roverInstructions))
+        endMarsRover();   
+         
+    retRoverWhereAbouts = haveRoverNavigate(roverInstructions);
+    console.log(retRoverWhereAbouts.coordinates);
+    console.log(getRoverFacingDirection());
+    return retRoverWhereAbouts;
+}
+
+function haveRoverNavigate(instructions:string) {
+    let retRoverWhereAbouts = {} as roverWhereAbouts;
+   /* if (!inputValidationInstructions(instructions))
+        endMarsRover(); 
+    let proposedRoverWhereAbouts:coordinates = {} as coordinates;   
+    const instructionSplitArray = instructions.split("");
+    //console.log(instructionSplitArray);
+    for (let i= 0; i< instructions.length; ++i)
+    {
+        switch (instructions[i])
+        {
+            case 'L': //rotateLeftRover();
+                break;
+            case 'R': //rotateRightRover();
+                break;
+            case 'M': //proposedRoverWhereAbouts = moveRover();
+                break;          
+        }
+    }
+    return retRoverWhereAbouts;
+}
+/*
+function rotateLeftRover() {
+    let roverFacingDirection = getRoverFacingDirection();
+    const leftTurnObject =  {'N':'W', 'W':'S', 'S':'E', 'E':'N'};
+ //   const resleftTurnObject = leftTurnObject['E'];
+    
+    const resleftTurnObject = leftTurnObject[roverFacingDirection];
+    console.log(resleftTurnObject);
+    return resleftTurnObject;
+
+}
+function rotateRightRover() {
+    let roverFacingDirection = getRoverFacingDirection()
+    const rightTurnObject =  {'N':'E', 'E':'S', 'S':'W', 'W':'N'};
+    const resrightTurnObject = rightTurnObject[roverFacingDirection];
+    return resrightTurnObject;
+
+}
+function moveRover():coordinates {
+    let currentRoverWhereAbouts : roverWhereAbouts = getRoverWhereAbouts();
+    const roverFacingDirection = getRoverFacingDirection();
+    let proposedRoverWhereAbouts:coordinates = {} as coordinates;
+    switch (roverFacingDirection) {
+        case 'N': proposedRoverWhereAbouts = northMove(currentRoverWhereAbouts);
+            break;
+        case 'S': proposedRoverWhereAbouts = southMove(currentRoverWhereAbouts);
+            break;
+        case 'E': proposedRoverWhereAbouts = eastMove(currentRoverWhereAbouts);
+            break;
+        case 'W': proposedRoverWhereAbouts = westMove(currentRoverWhereAbouts);
+            break;
+    }
+    return proposedRoverWhereAbouts;
+
+}
+
+function northMove(currentRoverWhereAbouts:coordinates): coordinates {
+    const marsPlateauEndYcoordinates = marsPlateau.endRange?.ycoordinates as number;
+    let proposedRoverCoordinates: coordinates = {} as coordinates;
+    let val:number = currentRoverWhereAbouts.ycoordinates as number;
+    if (val++ <= marsPlateauEndYcoordinates)
+        proposedRoverCoordinates =  {xcoordinates:currentRoverWhereAbouts.xcoordinates,ycoordinates:val};
+    return proposedRoverCoordinates;
+
+}
+
+function southMove(currentRoverWhereAbouts:coordinates): coordinates {
+    const marsPlateauStartYcoordinates = marsPlateau.startRange?.ycoordinates as number;
+    let proposedRoverCoordinates: coordinates = {} as coordinates;
+    let val:number = currentRoverWhereAbouts.ycoordinates as number;
+    if (val-- >= marsPlateauStartYcoordinates)
+        proposedRoverCoordinates =  {xcoordinates:currentRoverWhereAbouts.xcoordinates,ycoordinates:val};
+    return proposedRoverCoordinates;
+
+}
+
+function eastMove(currentRoverWhereAbouts:coordinates): coordinates {
+    const marsPlateauEndXcoordinates = marsPlateau.endRange?.xcoordinates as number;
+    let proposedRoverCoordinates: coordinates = {} as coordinates;
+    let val:number = currentRoverWhereAbouts.xcoordinates as number;
+    if (val++ <= marsPlateauEndXcoordinates)
+        proposedRoverCoordinates =  {xcoordinates:val,ycoordinates:currentRoverWhereAbouts.ycoordinates};
+    return proposedRoverCoordinates;
+
+}
+function westMove(currentRoverWhereAbouts:coordinates): coordinates {
+    const marsPlateauStartXcoordinates = marsPlateau.startRange?.xcoordinates as number;
+    let proposedRoverCoordinates: coordinates = {} as coordinates;
+    let val:number = currentRoverWhereAbouts.xcoordinates as number;
+    if (val-- <= marsPlateauStartXcoordinates)
+        proposedRoverCoordinates =  {xcoordinates:val,ycoordinates:currentRoverWhereAbouts.ycoordinates};
+    return proposedRoverCoordinates;
+
+}
+
+askRoverInstructions();
+*/
+//haveRoverNavigate();

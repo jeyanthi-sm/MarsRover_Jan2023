@@ -1,18 +1,21 @@
-# TypeScript project with Tests
+# TypeScript Mars Rover project 
 
-This repository can be used as a template for creating a TypeScript project using Jest for testing.
+This repository has the code to make the rover navigate from x y coordinates in the Plateau from specific facing direction for the given instructions.
 
 ## Instructions
+This app is to move the rover in the plateau from the given coordinates 
+and facing direction and gives the end coordinates by following the 
+instructions
 
-- Click the "Use this template" button
+The instructions 
+First, fork and clone this repository.
 
-- Click "Create new repository"
+Then run this command:
 
-- Give your repository a name and click "Create repository from template"
+npm install
 
-- Clone down your new repository to your computer
+You can then run
 
-- Navigate to the directory on your command line
+npm start
 
-- Run `npm install` followed by `npm test` to run the tests
 
