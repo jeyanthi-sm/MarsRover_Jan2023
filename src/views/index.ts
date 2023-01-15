@@ -18,9 +18,9 @@ function startProcess(): void {
 }
 
 
-export function endAdventure(): void {
+export function endMarsNavigation(): void {
 	print('***************************************');
-	print('You did not make it through Wonderland. 😭');
+	print('No Rover Instructions are presented 😭');
 	askQuestion('Press ENTER to restart! ', startRoverNavigation);
 }
 startRoverNavigation();

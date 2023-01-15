@@ -1,5 +1,5 @@
 import { askQuestion, clear, print } from '../views/console';
-import { endAdventure, startRoverNavigation } from '../views/index';
+import { endMarsNavigation,startRoverNavigation } from '../views/index';
 
 export class plateau //extends coordinates 
 {
@@ -19,16 +19,49 @@ export class plateau //extends coordinates
 };
 
 export let marsPlateau = new plateau();
+setPlateauStartXCoordinates();
+setPlateauStartYCoordinates();
 
-
-export function setPlateauXCoordinates(endXCoordinates: number): void {
+export function setPlateauStartXCoordinates(): void {
     marsPlateau.startRangeXCoordinates = 0;
-    marsPlateau.endRangeXCoordinates = endXCoordinates;
 }
 
+export function setPlateauEndXCoordinates(endXCoordinates: number): boolean {
+    if (endXCoordinates > 0 && endXCoordinates <= 7) {
+        marsPlateau.endRangeXCoordinates = endXCoordinates;
+        return true;
+    }
+    else
+        return false;
+}
 
-export function setPlateauYCoordinates(endYCoordinates: number): void {
+export function setPlateauStartYCoordinates(): void {
     marsPlateau.startRangeYCoordinates = 0;
-    marsPlateau.endRangeYCoordinates = endYCoordinates;
 }
 
+export function setPlateauEndYCoordinates(endYCoordinates: number): boolean {
+    if (endYCoordinates > 0 && endYCoordinates <= 7) {
+        marsPlateau.endRangeYCoordinates = endYCoordinates;
+        return true;
+    }
+    else
+        return false;
+}
+
+export function getPlateauStartXCoordinates(): number {
+    return marsPlateau.startRangeXCoordinates;
+}
+
+export function getPlateauStartYCoordinates(): number {
+    return marsPlateau.startRangeYCoordinates;
+}
+
+export function getPlateauEndXCoordinates(): number {
+    return marsPlateau.endRangeXCoordinates;
+}
+export function getPlateauEndYCoordinates(): number {
+    return marsPlateau.endRangeYCoordinates;
+}
+export function getPlateauCoordinates(): plateau {
+    return marsPlateau;
+}
