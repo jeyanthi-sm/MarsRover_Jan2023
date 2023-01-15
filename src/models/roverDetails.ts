@@ -1,3 +1,5 @@
+import { PLATEAU_END_RANGE, PLATEAU_START_RANGE } from "./plateau";
+
 export class roverWhereAbouts {
     xcoordinates!: number;
     ycoordinates!: number;
@@ -12,14 +14,11 @@ export class roverWhereAbouts {
 
 export let roverWhereAboutsCurrent: roverWhereAbouts = new roverWhereAbouts();
 
-
-
-
+/*
 export function getRoverWhereAboutsInp(inpRoverWhereAbouts: roverWhereAbouts): roverWhereAbouts {
     return inpRoverWhereAbouts;
 }
-
-
+*/
 
 export function setRoverWhereAbouts(xCoordinates: number, ycoordinates: number, facingDirection: string): void {
     roverWhereAboutsCurrent.xcoordinates! = xCoordinates;
@@ -27,10 +26,17 @@ export function setRoverWhereAbouts(xCoordinates: number, ycoordinates: number, 
     roverWhereAboutsCurrent.facingDirection = facingDirection;
 }
 
+export function setRoverXCoordinates(xCoordinates: number): boolean {
+    if (xCoordinates >= PLATEAU_START_RANGE && xCoordinates <= PLATEAU_END_RANGE) {
+        roverWhereAboutsCurrent.xcoordinates! = xCoordinates;
+        return true;
+    }
+    else
+    {
+        roverWhereAboutsCurrent.xcoordinates! = 0;
+        return false;
+    }
 
-
-export function setRoverXCoordinates(xCoordinates: number): void {
-    roverWhereAboutsCurrent.xcoordinates! = xCoordinates;
 }
 
 export function setRoverYCoordinates(yCoordinates: number): void {

@@ -1,5 +1,5 @@
 import { askQuestion, clear, print } from '../views/console';
-import { endMarsNavigation,startRoverNavigation } from '../views/index';
+import { endMarsNavigation, startRoverNavigation } from '../views/index';
 
 export class plateau //extends coordinates 
 {
@@ -18,6 +18,8 @@ export class plateau //extends coordinates
 
 };
 
+export const PLATEAU_END_RANGE = 5;
+export const PLATEAU_START_RANGE = 0;
 export let marsPlateau = new plateau();
 setPlateauStartXCoordinates();
 setPlateauStartYCoordinates();
@@ -27,7 +29,7 @@ export function setPlateauStartXCoordinates(): void {
 }
 
 export function setPlateauEndXCoordinates(endXCoordinates: number): boolean {
-    if (endXCoordinates > 0 && endXCoordinates <= 7) {
+    if (endXCoordinates > 0 && endXCoordinates <= PLATEAU_END_RANGE) {
         marsPlateau.endRangeXCoordinates = endXCoordinates;
         return true;
     }
@@ -40,7 +42,7 @@ export function setPlateauStartYCoordinates(): void {
 }
 
 export function setPlateauEndYCoordinates(endYCoordinates: number): boolean {
-    if (endYCoordinates > 0 && endYCoordinates <= 7) {
+    if (endYCoordinates > 0 && endYCoordinates <= PLATEAU_END_RANGE) {
         marsPlateau.endRangeYCoordinates = endYCoordinates;
         return true;
     }

@@ -1,14 +1,14 @@
 import { askQuestion, clear, print } from '../views/console';
 import { endMarsNavigation,startRoverNavigation } from '../views/index';
-import { plateau, marsPlateau } from '../models/plateau';
+import { plateau, marsPlateau, PLATEAU_END_RANGE, PLATEAU_START_RANGE } from '../models/plateau';
 import { setPlateauStartXCoordinates, setPlateauStartYCoordinates,setPlateauEndXCoordinates, setPlateauEndYCoordinates } from '../models/plateau';
 import { askRoverXCoordinates } from '../views/askRover';
 
 export function askPlateauEndXCoordinates(): void {
-    askQuestion('Enter the X Coordinate <= 7 ', inputValidationXCoordinates);
+    askQuestion(`Enter the X Coordinate <=  ${PLATEAU_END_RANGE} `, inputValidationXCoordinates);
 }
 export function askPlateauEndYCoordinates(startNavigation: string): void {
-    askQuestion('Enter the Y Coordinate <= 7 ', inputValidationYCoordinates);
+    askQuestion(`Enter the Y Coordinate <= ${PLATEAU_END_RANGE} `, inputValidationYCoordinates);
 }
 
 
@@ -19,17 +19,20 @@ export function inputValidation(inp: string): boolean {
         print(`That's not a number 😭`);
         return false;
     }
-    /*
-    if (typeinp > 7) {
-        print('Enter a number <= 7');
-        return false;
+    if (typeinp > PLATEAU_END_RANGE)
+    {
+        print(`😮`);
+        print(`Enter a number 😭 < ${PLATEAU_END_RANGE}`);
+        return false;        
     }
-    if (typeinp < 0) {
-        print('Enter a number > 0');
-        return false;
+    if (typeinp < PLATEAU_START_RANGE)
+    {
+        print(`😮`);
+        print(`Enter a number 😭 > ${PLATEAU_START_RANGE}`);
+        return false;        
     }
- */
-    if (typeinp <= 7)
+    
+    if (typeinp <= PLATEAU_END_RANGE)
         return true;
     else
         return false;
