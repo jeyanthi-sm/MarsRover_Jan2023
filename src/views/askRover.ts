@@ -1,6 +1,6 @@
 import { clear, print, askQuestion } from '../views/console'
 import { marsPlateau } from '../models/plateau';
-import { endAdventure, startRoverNavigation } from '../views/index';
+import { endMarsNavigation, startRoverNavigation } from '../views/index';
 import { printPlateauCoordinates } from './askPlateau';
 import { setRoverYCoordinates, setRoverXCoordinates, setRoverFacingDirection } from '../models/roverDetails';
 import { roverWhereAboutsCurrent } from '../models/roverDetails';
@@ -29,7 +29,7 @@ function inputValidationRoverInstructions(inp: string): void {
     if (matchPattern)
         haveRoverNavigate(inp.toUpperCase());
     else
-        endAdventure();
+        endMarsNavigation();
 }
 
 function inputValidationForRoverXCoordinates(inp: string): void {
@@ -37,15 +37,15 @@ function inputValidationForRoverXCoordinates(inp: string): void {
     if (isNaN(typeinp)) {
         print(`😮`);
         print(`That's not a number 😭`);
-        return endAdventure();
+        return endMarsNavigation();
     }
     if (typeinp > marsPlateau.endRangeXCoordinates) {
         print(`Enter a number <= ${marsPlateau.endRangeXCoordinates}`);
-        return endAdventure();
+        return endMarsNavigation();
     }
     if (typeinp < marsPlateau.startRangeXCoordinates) {
         print(`Enter a number > ${marsPlateau.startRangeXCoordinates}`);
-        return endAdventure();
+        return endMarsNavigation();
     }
 
     if (typeinp <= marsPlateau.endRangeXCoordinates) {
@@ -53,7 +53,7 @@ function inputValidationForRoverXCoordinates(inp: string): void {
         return askRoverYCoordinates();
     }
     else
-        endAdventure();
+        endMarsNavigation();
 
 
 }
@@ -63,15 +63,15 @@ function inputValidationForRoverYCoordinates(inp: string): void {
     if (isNaN(typeinp)) {
         print(`😮`);
         print(`That's not a number 😭`);
-        return endAdventure();
+        return endMarsNavigation();
     }
     if (typeinp > marsPlateau.endRangeYCoordinates) {
         print(`Enter a number <= ${marsPlateau.endRangeYCoordinates}`);
-        return endAdventure();
+        return endMarsNavigation();
     }
     if (typeinp < marsPlateau.startRangeYCoordinates) {
         print(`Enter a number > ${marsPlateau.startRangeYCoordinates}`);
-        return endAdventure();
+        return endMarsNavigation();
     }
 
     if (typeinp <= marsPlateau.endRangeYCoordinates) {
@@ -79,7 +79,7 @@ function inputValidationForRoverYCoordinates(inp: string): void {
         return askRoverFacingDirection();
     }
     else
-        endAdventure();
+        endMarsNavigation();
 
 
 }
@@ -96,7 +96,7 @@ function inputValidationRoverFacingDirection(inp: string): void {
         return askRoverInstruction();
     }
     else
-        endAdventure();
+        endMarsNavigation();
 
 }
 

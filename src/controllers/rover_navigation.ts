@@ -1,6 +1,6 @@
 import { askQuestion } from '../views/console';
 import { printRoverWhereAbouts } from '../views/askRover';
-import { setRoverWhereAbouts, setRoverFacingDirection, getRoverFacingDirection, getRoverWhereAbouts } from '../models/roverDetails';
+import { setRoverWhereAbouts, setRoverFacingDirection, getRoverWhereAbouts } from '../models/roverDetails';
 import { startRoverNavigation } from '../views/index';
 import { roverWhereAbouts } from '../models/roverDetails';
 import { marsPlateau } from '../models/plateau';
@@ -23,7 +23,7 @@ export function haveRoverNavigate(instructions: string): void {
 }
 
 function rotateLeftRover(): string {
-    const roverFacingDirection: string = getRoverFacingDirection();
+    const roverFacingDirection: string = getRoverWhereAbouts().facingDirection;
     type leftTurnObject = { [index: string]: string; };
     const leftTurnObj: leftTurnObject = { 'N': 'W', 'W': 'S', 'S': 'E', 'E': 'N', };
     const resleftTurnObject: string = leftTurnObj[roverFacingDirection];
@@ -31,7 +31,7 @@ function rotateLeftRover(): string {
 
 }
 function rotateRightRover(): string {
-    const roverFacingDirection: string = getRoverFacingDirection()
+    const roverFacingDirection: string = getRoverWhereAbouts().facingDirection;
     type rightTurnObject = { [index: string]: string; };
     const rightTurnObj: rightTurnObject = { 'N': 'E', 'E': 'S', 'S': 'W', 'W': 'N', };
     const resrightTurnObject: string = rightTurnObj[roverFacingDirection];
@@ -42,7 +42,7 @@ function rotateRightRover(): string {
 
 function moveRover(): roverWhereAbouts {
     let currentRoverWhereAbouts: roverWhereAbouts = getRoverWhereAbouts();
-    const roverFacingDirection: string = getRoverFacingDirection();
+    const roverFacingDirection: string = getRoverWhereAbouts().facingDirection;
     let proposedRoverWhereAbouts: roverWhereAbouts = new roverWhereAbouts();
     switch (roverFacingDirection) {
         case 'N': northMove(currentRoverWhereAbouts.xcoordinates, currentRoverWhereAbouts.ycoordinates);
@@ -81,8 +81,7 @@ function southMove(currentRoverWhereAboutsXcoordinates: number,
 }
 
 function eastMove(currentRoverWhereAboutsXcoordinates: number, currentRoverWhereAboutsYCoordinates: number): void {
-    //const marsPlateauEndXcoordinates: number = marsPlateau.endRangeXCoordinates as number;
-    const newRoverXCoordinatesval: number = currentRoverWhereAboutsXcoordinates as number;
+     const newRoverXCoordinatesval: number = currentRoverWhereAboutsXcoordinates as number;
     let proposedRoverXCoordinatesVal: number = newRoverXCoordinatesval + 1;
     if (proposedRoverXCoordinatesVal >= marsPlateau.startRangeXCoordinates &&
         proposedRoverXCoordinatesVal <= marsPlateau.endRangeXCoordinates)
