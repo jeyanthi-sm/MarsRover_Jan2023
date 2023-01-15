@@ -1,5 +1,5 @@
 import { clear, print, askQuestion } from './console';
-import { askPlateauEndXCoordinates, askPlateauEndYCoordinates } from '../views/askPlateau';
+import { askPlateauEndXCoordinates, askPlateauEndYCoordinates } from './askPlateau';
 
 
 export function startRoverNavigation(): void {
