@@ -61,8 +61,3 @@ export function setRoverFacingDirection(inpDirection: string) {
 export function getRoverWhereAbouts(): roverWhereAbouts {
     return roverWhereAboutsCurrent;
 }
-/*
-export function getRoverFacingDirection(): string {
-    return roverWhereAboutsCurrent.facingDirection!;
-}
-*/

@@ -22,7 +22,7 @@ export function haveRoverNavigate(instructions: string): void {
     askQuestion('Enter Y to Continue', startRoverNavigation);
 }
 
-function rotateLeftRover(): string {
+export function rotateLeftRover(): string {
     const roverFacingDirection: string = getRoverWhereAbouts().facingDirection;
     type leftTurnObject = { [index: string]: string; };
     const leftTurnObj: leftTurnObject = { 'N': 'W', 'W': 'S', 'S': 'E', 'E': 'N', };
@@ -30,7 +30,7 @@ function rotateLeftRover(): string {
     return resleftTurnObject;
 
 }
-function rotateRightRover(): string {
+export function rotateRightRover(): string {
     const roverFacingDirection: string = getRoverWhereAbouts().facingDirection;
     type rightTurnObject = { [index: string]: string; };
     const rightTurnObj: rightTurnObject = { 'N': 'E', 'E': 'S', 'S': 'W', 'W': 'N', };
@@ -40,7 +40,7 @@ function rotateRightRover(): string {
 }
 
 
-function moveRover(): roverWhereAbouts {
+export function moveRover(): roverWhereAbouts {
     let currentRoverWhereAbouts: roverWhereAbouts = getRoverWhereAbouts();
     const roverFacingDirection: string = getRoverWhereAbouts().facingDirection;
     let proposedRoverWhereAbouts: roverWhereAbouts = new roverWhereAbouts();
@@ -59,9 +59,8 @@ function moveRover(): roverWhereAbouts {
 
 }
 
-function northMove(currentRoverWhereAboutsXcoordinates: number,
+export function northMove(currentRoverWhereAboutsXcoordinates: number,
     currentRoverWhereAboutsYCoordinates: number): void {
-    //const marsPlateauEndYcoordinates: number = marsPlateau.endRangeYCoordinates as number;
     const newRoverYCoordinatesval: number = currentRoverWhereAboutsYCoordinates as number;
     let proposedRoverYCoordinatesVal: number = newRoverYCoordinatesval + 1;
     if (proposedRoverYCoordinatesVal >= marsPlateau.startRangeYCoordinates &&
@@ -69,9 +68,8 @@ function northMove(currentRoverWhereAboutsXcoordinates: number,
         setRoverWhereAbouts(currentRoverWhereAboutsXcoordinates, proposedRoverYCoordinatesVal, 'N');
 }
 
-function southMove(currentRoverWhereAboutsXcoordinates: number,
+export function southMove(currentRoverWhereAboutsXcoordinates: number,
     currentRoverWhereAboutsYCoordinates: number): void {
-    //  const marsPlateauStartYcoordinates: number = marsPlateau.startRangeYCoordinates as number;
     const newRoverYCoordinatesval: number = currentRoverWhereAboutsYCoordinates as number;
     let proposedRoverYCoordinatesVal: number = newRoverYCoordinatesval - 1;
     if (proposedRoverYCoordinatesVal >= marsPlateau.startRangeYCoordinates &&
@@ -80,14 +78,14 @@ function southMove(currentRoverWhereAboutsXcoordinates: number,
 
 }
 
-function eastMove(currentRoverWhereAboutsXcoordinates: number, currentRoverWhereAboutsYCoordinates: number): void {
-     const newRoverXCoordinatesval: number = currentRoverWhereAboutsXcoordinates as number;
+export function eastMove(currentRoverWhereAboutsXcoordinates: number, currentRoverWhereAboutsYCoordinates: number): void {
+    const newRoverXCoordinatesval: number = currentRoverWhereAboutsXcoordinates as number;
     let proposedRoverXCoordinatesVal: number = newRoverXCoordinatesval + 1;
     if (proposedRoverXCoordinatesVal >= marsPlateau.startRangeXCoordinates &&
         proposedRoverXCoordinatesVal <= marsPlateau.endRangeXCoordinates)
         setRoverWhereAbouts(proposedRoverXCoordinatesVal, currentRoverWhereAboutsYCoordinates, 'E');
 }
-function westMove(currentRoverWhereAboutsXcoordinates: number, currentRoverWhereAboutsYCoordinates: number): void {
+export function westMove(currentRoverWhereAboutsXcoordinates: number, currentRoverWhereAboutsYCoordinates: number): void {
     const marsPlateauStartXcoordinates = marsPlateau.startRangeXCoordinates as number;
     const newRoverXCoordinatesval: number = currentRoverWhereAboutsXcoordinates as number;
     const proposedRoverXCoordinatesVal: number = currentRoverWhereAboutsXcoordinates - 1;

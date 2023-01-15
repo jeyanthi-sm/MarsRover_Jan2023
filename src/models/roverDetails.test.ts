@@ -3,54 +3,81 @@ import { roverWhereAbouts } from "./roverDetails";
 import { setRoverXCoordinates, setRoverYCoordinates, setRoverFacingDirection } from "./roverDetails";
 import { getRoverWhereAbouts } from "./roverDetails";
 
-describe("test set Rover Facing Direction ", () => {
-    setRoverFacingDirection('nesw');    
-    it("should return NESW for setRoverFacingDirection()", () => {
-        expect(getRoverWhereAbouts().facingDirection).toBe('NESW');
-    });
-});
-
 
 describe("test set Rover X Coordinates to 0 ", () => {
-    setRoverXCoordinates(-1);    
+    const inputValue = -1;
+    const returnValue = 0;
+    setRoverXCoordinates(inputValue);
     it("should return undefined for setRoverXCoordinates()", () => {
-        expect(getRoverWhereAbouts().xcoordinates).toBe(0);
+        expect(getRoverWhereAbouts().xcoordinates).toBe(returnValue);
     });
 });
 
 describe("test set Rover X Coordinates to 2 ", () => {
-    setRoverXCoordinates(2);    
+    const inputValue = 2;
+    const returnValue = 2;
+    setRoverXCoordinates(inputValue);
     it("should return undefined for setRoverXCoordinates()", () => {
-        expect(getRoverWhereAbouts().xcoordinates).toBe(2);
+        expect(getRoverWhereAbouts().xcoordinates).toBe(returnValue);
     });
 });
 
 describe("test set Rover X Coordinates to 0 ", () => {
-    setRoverXCoordinates(6);    
+    const inputValue = 6;
+    const returnValue = 0;
+    setRoverXCoordinates(inputValue);
     it("should return undefined for setRoverXCoordinates()", () => {
-        expect(getRoverWhereAbouts().xcoordinates).toBe(0);
+        expect(getRoverWhereAbouts().xcoordinates).toBe(returnValue);
     });
 });
 
 
 describe("test set Rover Y Coordinates to 0 ", () => {
-    setRoverYCoordinates(6);    
+    const inputValue = 6;
+    const returnValue = 0;
+    setRoverYCoordinates(inputValue);
     it("should return undefined for setRoverYCoordinates()", () => {
-        expect(getRoverWhereAbouts().ycoordinates).toBe(0);
+        expect(getRoverWhereAbouts().ycoordinates).toBe(returnValue);
     });
 });
 
 describe("test set Rover Y Coordinates to 2 ", () => {
-    setRoverYCoordinates(2);    
-    it("should return undefined for setRoverYCoordinates()", () => {
-        expect(getRoverWhereAbouts().ycoordinates).toBe(2);
+    const inputValue = 2;
+    const returnValue = 2;
+
+    setRoverYCoordinates(inputValue);
+    it("should return 2 for setRoverYCoordinates()", () => {
+        expect(getRoverWhereAbouts().ycoordinates).toBe(returnValue);
     });
 });
 
 describe("test set Rover Y Coordinates to 0 ", () => {
-    setRoverYCoordinates(-1);    
+    const inputValue = -1;
+    const returnValue = 0;
+
+    setRoverYCoordinates(inputValue);
     it("should return undefined for setRoverYCoordinates()", () => {
-        expect(getRoverWhereAbouts().ycoordinates).toBe(0);
+        expect(getRoverWhereAbouts().ycoordinates).toBe(returnValue);
+    });
+});
+
+
+describe("test set Rover Facing Direction ", () => {
+    const inputValue = 'n';
+    const returnValue = 'N';
+    setRoverFacingDirection(inputValue);
+    it("should return N for setRoverFacingDirection()", () => {
+        expect(getRoverWhereAbouts().facingDirection).toBe(returnValue);
+    });
+});
+
+
+describe("test set Rover Facing Direction ", () => {
+    const inputValue = 'T';
+    const returnValue = '';
+    setRoverFacingDirection(inputValue);
+    it("should return empty string for setRoverFacingDirection()", () => {
+        expect(getRoverWhereAbouts().facingDirection).toBe(returnValue);
     });
 });
 
