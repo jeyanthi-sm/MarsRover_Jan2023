@@ -28,3 +28,9 @@ You should see a welcome message
 
 ## Beginning your Mars Rover Navigation
 
+The applicatiohn is to move rover around the surface of Mars. The Surface of the mars is represented by plateau. The assumption is plateau to be a rectangle/square The rover position is represented by x and y coordinates and the letters N, E,S,W to represents its facing direction. The instructio is to move the rover on the surface. The instruction can be L for left turn, R - Right turn and M - Move. The Rover can be move only one grid at a time. If it is facing N then it moves x,y+1.
+
+At any time if you want to quit then use ctr+c to quit the application
+
+Enjoy the mars navigation.
+
