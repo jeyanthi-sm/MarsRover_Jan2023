@@ -21,49 +21,59 @@ export class plateau //extends coordinates
 export const PLATEAU_END_RANGE = 5;
 export const PLATEAU_START_RANGE = 0;
 export let marsPlateau = new plateau();
-setPlateauStartXCoordinates();
-setPlateauStartYCoordinates();
+setPlateauStartXCoordinates(marsPlateau);
+setPlateauStartYCoordinates(marsPlateau);
 
-export function setPlateauStartXCoordinates(): void {
-    marsPlateau.startRangeXCoordinates = 0;
+export function plateauInit(): plateau {
+    const outputPlateauClass: plateau = new plateau();
+    setPlateauStartXCoordinates(outputPlateauClass);
+    setPlateauStartYCoordinates(outputPlateauClass);
+    
+    return outputPlateauClass;
 }
 
-export function setPlateauEndXCoordinates(endXCoordinates: number): boolean {
+
+export function setPlateauStartXCoordinates(inputPlateauClass:plateau = marsPlateau): void {
+    inputPlateauClass.startRangeXCoordinates = 0;
+}
+
+
+export function setPlateauEndXCoordinates(inputPlateauClass:plateau=marsPlateau,endXCoordinates: number): boolean {
     if (endXCoordinates > 0 && endXCoordinates <= PLATEAU_END_RANGE) {
-        marsPlateau.endRangeXCoordinates = endXCoordinates;
+        inputPlateauClass.endRangeXCoordinates = endXCoordinates;
         return true;
     }
     else
         return false;
 }
 
-export function setPlateauStartYCoordinates(): void {
-    marsPlateau.startRangeYCoordinates = 0;
+export function setPlateauStartYCoordinates(inputPlateauClass:plateau=marsPlateau): void {
+    inputPlateauClass.startRangeYCoordinates = 0;
 }
 
-export function setPlateauEndYCoordinates(endYCoordinates: number): boolean {
+export function setPlateauEndYCoordinates(inputPlateauClass:plateau=marsPlateau,endYCoordinates: number): boolean {
     if (endYCoordinates > 0 && endYCoordinates <= PLATEAU_END_RANGE) {
-        marsPlateau.endRangeYCoordinates = endYCoordinates;
+        inputPlateauClass.endRangeYCoordinates = endYCoordinates;
         return true;
     }
     else
         return false;
 }
 
-export function getPlateauStartXCoordinates(): number {
-    return marsPlateau.startRangeXCoordinates;
+export function getPlateauStartXCoordinates(inputPlateauClass:plateau=marsPlateau): number {
+    return inputPlateauClass.startRangeXCoordinates;
 }
 
-export function getPlateauStartYCoordinates(): number {
-    return marsPlateau.startRangeYCoordinates;
+export function getPlateauStartYCoordinates(inputPlateauClass:plateau=marsPlateau): number {
+    return inputPlateauClass.startRangeYCoordinates;
 }
 
-export function getPlateauEndXCoordinates(): number {
-    return marsPlateau.endRangeXCoordinates;
+export function getPlateauEndXCoordinates(inputPlateauClass:plateau=marsPlateau): number {
+    return inputPlateauClass.endRangeXCoordinates;
 }
-export function getPlateauEndYCoordinates(): number {
-    return marsPlateau.endRangeYCoordinates;
+export function getPlateauEndYCoordinates(inputPlateauClass:plateau=marsPlateau): number {
+    return inputPlateauClass.endRangeYCoordinates;
 }
-export function getPlateauCoordinates(): plateau {
-    return marsPlateau;
+export function getPlateauCoordinates(inputPlateauClass:plateau=marsPlateau): plateau {
+    return inputPlateauClass;
 }

@@ -1,6 +1,6 @@
 import { roverWhereAboutsInit,getRoverWhereAbouts, setRoverFacingDirection, setRoverWhereAbouts } from '../models/roverDetails';
 import { haveRoverNavigate, northMove, southMove, eastMove, westMove, rotateLeftRover, rotateRightRover, moveRover } from '../controllers/rover_navigation';
-import { setPlateauEndXCoordinates, setPlateauEndYCoordinates } from '../models/plateau';
+import { marsPlateau, plateauInit,setPlateauEndXCoordinates, setPlateauEndYCoordinates } from '../models/plateau';
 
 
 describe("test rotateLeftRover", () => {
@@ -11,11 +11,12 @@ describe("test rotateLeftRover", () => {
     const roverFacingDirection = 'N';
     const returnRoverFacingDirection = 'W';
 
-    let currentRoverInstance = roverWhereAboutsInit();
-    currentRoverInstance = roverWhereAboutsInit();
+    let currentPlateauInstance = plateauInit();
 
-    setPlateauEndXCoordinates(plateauEndXcoordinates);
-    setPlateauEndYCoordinates(plateauEndYCoordinates);
+    let currentRoverInstance = roverWhereAboutsInit();
+
+    setPlateauEndXCoordinates(currentPlateauInstance,plateauEndXcoordinates);
+    setPlateauEndYCoordinates(currentPlateauInstance,plateauEndYCoordinates);
 
     setRoverWhereAbouts(currentRoverInstance,roverXCoordinates, roverYCoordinates, roverFacingDirection);
 
@@ -32,11 +33,14 @@ describe("test rotateLeftRover", () => {
     const roverFacingDirection = 'W';
     const returnRoverFacingDirection = 'S';
 
+
+    let currentPlateauInstance = plateauInit();
+
     let currentRoverInstance = roverWhereAboutsInit();
     currentRoverInstance = roverWhereAboutsInit();
 
-    setPlateauEndXCoordinates(plateauEndXcoordinates);
-    setPlateauEndYCoordinates(plateauEndYCoordinates);
+    setPlateauEndXCoordinates(currentPlateauInstance,plateauEndXcoordinates);
+    setPlateauEndYCoordinates(currentPlateauInstance,plateauEndYCoordinates);
 
     setRoverWhereAbouts(currentRoverInstance,roverXCoordinates, roverYCoordinates, roverFacingDirection);
 
@@ -53,11 +57,13 @@ describe("test rotateLeftRover", () => {
     const roverFacingDirection = 'S';
     const returnRoverFacingDirection = 'E';
 
+    let currentPlateauInstance = plateauInit();
+
     let currentRoverInstance = roverWhereAboutsInit();
     currentRoverInstance = roverWhereAboutsInit();
 
-    setPlateauEndXCoordinates(plateauEndXcoordinates);
-    setPlateauEndYCoordinates(plateauEndYCoordinates);
+    setPlateauEndXCoordinates(currentPlateauInstance,plateauEndXcoordinates);
+    setPlateauEndYCoordinates(currentPlateauInstance,plateauEndYCoordinates);
 
     setRoverWhereAbouts(currentRoverInstance,roverXCoordinates, roverYCoordinates, roverFacingDirection);
 
@@ -74,11 +80,13 @@ describe("test rotateLeftRover", () => {
     const roverFacingDirection = 'E';
     const returnRoverFacingDirection = 'N';
 
+    let currentPlateauInstance = plateauInit();
+
     let currentRoverInstance = roverWhereAboutsInit();
     currentRoverInstance = roverWhereAboutsInit();
 
-    setPlateauEndXCoordinates(plateauEndXcoordinates);
-    setPlateauEndYCoordinates(plateauEndYCoordinates);
+    setPlateauEndXCoordinates(currentPlateauInstance,plateauEndXcoordinates);
+    setPlateauEndYCoordinates(currentPlateauInstance,plateauEndYCoordinates);
 
     setRoverWhereAbouts(currentRoverInstance,roverXCoordinates, roverYCoordinates, roverFacingDirection);
 
@@ -96,12 +104,14 @@ describe("test rotateRightRover", () => {
     const roverFacingDirection = 'E';
     const returnRoverFacingDirection = 'S';
 
+    let currentPlateauInstance = plateauInit();
+
     let currentRoverInstance = roverWhereAboutsInit();
     currentRoverInstance = roverWhereAboutsInit();
 
 
-    setPlateauEndXCoordinates(plateauEndXcoordinates);
-    setPlateauEndYCoordinates(plateauEndYCoordinates);
+    setPlateauEndXCoordinates(currentPlateauInstance,plateauEndXcoordinates);
+    setPlateauEndYCoordinates(currentPlateauInstance,plateauEndYCoordinates);
 
     setRoverWhereAbouts(currentRoverInstance,roverXCoordinates, roverYCoordinates, roverFacingDirection);
 
@@ -121,12 +131,14 @@ describe("test rotateRightRover", () => {
     const roverFacingDirection = 'S';
     const returnRoverFacingDirection = 'W';
 
+    let currentPlateauInstance = plateauInit();
+
     let currentRoverInstance = roverWhereAboutsInit();
     currentRoverInstance = roverWhereAboutsInit();
 
 
-    setPlateauEndXCoordinates(plateauEndXcoordinates);
-    setPlateauEndYCoordinates(plateauEndYCoordinates);
+    setPlateauEndXCoordinates(currentPlateauInstance,plateauEndXcoordinates);
+    setPlateauEndYCoordinates(currentPlateauInstance,plateauEndYCoordinates);
 
     setRoverWhereAbouts(currentRoverInstance,roverXCoordinates, roverYCoordinates, roverFacingDirection);
 
@@ -148,9 +160,11 @@ describe("test rotateRightRover", () => {
     let currentRoverInstance = roverWhereAboutsInit();
     currentRoverInstance = roverWhereAboutsInit();
 
+    let currentPlateauInstance = plateauInit();
 
-    setPlateauEndXCoordinates(plateauEndXcoordinates);
-    setPlateauEndYCoordinates(plateauEndYCoordinates);
+
+    setPlateauEndXCoordinates(currentPlateauInstance,plateauEndXcoordinates);
+    setPlateauEndYCoordinates(currentPlateauInstance,plateauEndYCoordinates);
 
     setRoverWhereAbouts(currentRoverInstance,roverXCoordinates, roverYCoordinates, roverFacingDirection);
 
@@ -169,12 +183,15 @@ describe("test rotateRightRover", () => {
     const roverFacingDirection = 'N';
     const returnRoverFacingDirection = 'E';
 
+
+    let currentPlateauInstance = plateauInit();
+
     let currentRoverInstance = roverWhereAboutsInit();
     currentRoverInstance = roverWhereAboutsInit();
 
 
-    setPlateauEndXCoordinates(plateauEndXcoordinates);
-    setPlateauEndYCoordinates(plateauEndYCoordinates);
+    setPlateauEndXCoordinates(currentPlateauInstance,plateauEndXcoordinates);
+    setPlateauEndYCoordinates(currentPlateauInstance,plateauEndYCoordinates);
 
     setRoverWhereAbouts(currentRoverInstance,roverXCoordinates, roverYCoordinates, roverFacingDirection);
 
@@ -191,19 +208,22 @@ describe("test haveRoverNavigate", () => {
     const roverXCoordinates = 1;
     const roverYCoordinates = 2;
     const roverFacingDirection = 'N';
-    const roverInstruction = 'L'; //'MLMLMLMM';
+    const roverInstruction = 'LMLMLMLMM';
     const returnRoverXCoordinates = 3;
     const returnRoverYCoordinates = 3;
     const returnRoverFacingDirection = 'E';
+
+    let currentPlateauInstance = plateauInit();
+
     let currentRoverInstance = roverWhereAboutsInit();
     currentRoverInstance = roverWhereAboutsInit();
 
 
-    setPlateauEndXCoordinates(plateauEndXcoordinates);
-    setPlateauEndYCoordinates(plateauEndYCoordinates);
+    setPlateauEndXCoordinates(currentPlateauInstance,plateauEndXcoordinates);
+    setPlateauEndYCoordinates(currentPlateauInstance,plateauEndYCoordinates);
 
     setRoverWhereAbouts(currentRoverInstance,roverXCoordinates, roverYCoordinates, roverFacingDirection);
-    haveRoverNavigate(currentRoverInstance,roverInstruction);
+    haveRoverNavigate(currentPlateauInstance,currentRoverInstance,roverInstruction);
     console.log(currentRoverInstance);
     it("haveRoverNavigate should return 3,3,E ()", () => {
         expect(((getRoverWhereAbouts(currentRoverInstance).xcoordinates === returnRoverXCoordinates) &&
@@ -224,16 +244,20 @@ describe("test NorthMove", () => {
     const returnRoverXCoordinates = 1;
     const returnRoverYCoordinates = 3;
     const returnRoverFacingDirection = 'N';
+
+
+    let currentPlateauInstance = plateauInit();
+
     let currentRoverInstance = roverWhereAboutsInit();
     currentRoverInstance = roverWhereAboutsInit();
 
 
-    setPlateauEndXCoordinates(plateauEndXcoordinates);
-    setPlateauEndYCoordinates(plateauEndYCoordinates);
+    setPlateauEndXCoordinates(currentPlateauInstance,plateauEndXcoordinates);
+    setPlateauEndYCoordinates(currentPlateauInstance,plateauEndYCoordinates);
     
     setRoverWhereAbouts(currentRoverInstance,roverXCoordinates, roverYCoordinates, roverFacingDirection);
     
-    northMove(currentRoverInstance);
+    northMove(currentPlateauInstance,currentRoverInstance);
 
 
     it("should return 1,3,N for North Move ()", () => {
@@ -257,14 +281,16 @@ describe("test SouthMove", () => {
     const returnRoverYCoordinates = 1;
     const returnRoverFacingDirection = 'S';
 
+    let currentPlateauInstance = plateauInit();
+
     let currentRoverInstance = roverWhereAboutsInit();
     currentRoverInstance = roverWhereAboutsInit();
 
 
-    setPlateauEndXCoordinates(plateauEndXcoordinates);
-    setPlateauEndYCoordinates(plateauEndYCoordinates);
+    setPlateauEndXCoordinates(currentPlateauInstance,plateauEndXcoordinates);
+    setPlateauEndYCoordinates(currentPlateauInstance,plateauEndYCoordinates);
     setRoverWhereAbouts(currentRoverInstance,roverXCoordinates, roverYCoordinates, roverFacingDirection);
-    southMove(currentRoverInstance);
+    southMove(currentPlateauInstance,currentRoverInstance);
 
     it("should return 1,1,S for South Move ()", () => {
         expect(((getRoverWhereAbouts(currentRoverInstance).xcoordinates === returnRoverXCoordinates) &&
@@ -286,13 +312,16 @@ describe("test EastMove", () => {
     const returnRoverYCoordinates = 2;
     const returnRoverFacingDirection = 'E';
 
+    let currentPlateauInstance = plateauInit();
+
+
     let currentRoverInstance = roverWhereAboutsInit();
     currentRoverInstance = roverWhereAboutsInit();
 
-    setPlateauEndXCoordinates(plateauEndXcoordinates);
-    setPlateauEndYCoordinates(plateauEndYCoordinates);
+    setPlateauEndXCoordinates(currentPlateauInstance,plateauEndXcoordinates);
+    setPlateauEndYCoordinates(currentPlateauInstance,plateauEndYCoordinates);
     setRoverWhereAbouts(currentRoverInstance,roverXCoordinates, roverYCoordinates, roverFacingDirection);
-    eastMove(currentRoverInstance);
+    eastMove(currentPlateauInstance,currentRoverInstance);
 
     
     it("should return 2,2,E for East Move ()", () => {
@@ -314,15 +343,17 @@ describe("test WestMove", () => {
     const returnRoverYCoordinates = 2;
     const returnRoverFacingDirection = 'W';
 
+    let currentPlateauInstance = plateauInit();
+
     let currentRoverInstance = roverWhereAboutsInit();
     currentRoverInstance = roverWhereAboutsInit();
 
 
-    setPlateauEndXCoordinates(plateauEndXcoordinates);
-    setPlateauEndYCoordinates(plateauEndYCoordinates);
+    setPlateauEndXCoordinates(currentPlateauInstance,plateauEndXcoordinates);
+    setPlateauEndYCoordinates(currentPlateauInstance,plateauEndYCoordinates);
     setRoverWhereAbouts(currentRoverInstance,roverXCoordinates, roverYCoordinates, roverFacingDirection);
 
-    westMove(currentRoverInstance);
+    westMove(currentPlateauInstance,currentRoverInstance);
 
     it("should return 0,2,W for West Move ()", () => {
         expect(((getRoverWhereAbouts(currentRoverInstance).xcoordinates === returnRoverXCoordinates) &&
@@ -345,14 +376,16 @@ describe("test MoveRover", () => {
     const returnRoverYCoordinates = 0;
     const returnRoverFacingDirection = 'W';
     
+    let currentPlateauInstance = plateauInit();
+
 
     let currentRoverInstance = roverWhereAboutsInit();
     currentRoverInstance = roverWhereAboutsInit();
 
-    setPlateauEndXCoordinates(plateauEndXcoordinates);
-    setPlateauEndYCoordinates(plateauEndYCoordinates);
+    setPlateauEndXCoordinates(currentPlateauInstance,plateauEndXcoordinates);
+    setPlateauEndYCoordinates(currentPlateauInstance,plateauEndYCoordinates);
     setRoverWhereAbouts(currentRoverInstance,roverXCoordinates, roverYCoordinates, roverFacingDirection);
-    moveRover(currentRoverInstance);
+    moveRover(currentPlateauInstance,currentRoverInstance);
 
 
     it("should return 0,0,W for move Rover ()", () => {

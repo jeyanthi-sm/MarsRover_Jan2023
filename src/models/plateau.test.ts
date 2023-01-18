@@ -1,24 +1,28 @@
 
-import { setPlateauStartXCoordinates, setPlateauStartYCoordinates, setPlateauEndXCoordinates, setPlateauEndYCoordinates } from '../models/plateau';
+import { setPlateauStartXCoordinates, setPlateauStartYCoordinates, setPlateauEndXCoordinates, setPlateauEndYCoordinates, plateau, plateauInit } from '../models/plateau';
 import { getPlateauStartXCoordinates, getPlateauStartYCoordinates, getPlateauEndXCoordinates, getPlateauEndYCoordinates } from '../models/plateau';
 
 
 describe("test set Plateau Start X Coordinates", () => {
     const returnValue = 0;
-    setPlateauStartXCoordinates();
+    let currentPlateauInstance:plateau = new plateau();   
+    setPlateauStartXCoordinates(currentPlateauInstance);
 
     it("should return 0 for setPlateauStartXCoordinates()", () => {
-        expect(getPlateauStartXCoordinates()).toBe(returnValue);
+        expect(getPlateauStartXCoordinates(currentPlateauInstance)).toBe(returnValue);
     });
 });
 
 
 describe("test set Plateau Start Y Coordinates", () => {
     const returnValue = 0;
-    setPlateauStartYCoordinates();
+
+    let currentPlateauInstance:plateau = new plateau();   
+    setPlateauStartXCoordinates(currentPlateauInstance);
+    setPlateauStartYCoordinates(currentPlateauInstance);
 
     it("should return 0 for setPlateauStartYCoordinates()", () => {
-        expect(getPlateauStartYCoordinates()).toBe(returnValue);
+        expect(getPlateauStartYCoordinates(currentPlateauInstance)).toBe(returnValue);
     });
 });
 
@@ -26,40 +30,53 @@ describe("test set Plateau Start Y Coordinates", () => {
 describe("test set Plateau End X Coordinates", () => {
     const inputValue = -1;
     const returnValue = undefined;
-    setPlateauEndXCoordinates(inputValue);
+
+    let currentPlateauInstance:plateau = new plateau();   
+    setPlateauStartXCoordinates(currentPlateauInstance);
+
+    setPlateauEndXCoordinates(currentPlateauInstance,inputValue);
 
     it("should return undefined for setPlateauEndXCoordinates() -1 ", () => {
-        expect(getPlateauEndXCoordinates()).toBe(returnValue);
+        expect(getPlateauEndXCoordinates(currentPlateauInstance)).toBe(returnValue);
     });
 });
 
 describe("test set Plateau End X Coordinates", () => {
     const inputValue = 6;
     const returnValue = undefined;
-    setPlateauEndXCoordinates(inputValue);
+
+    let currentPlateauInstance:plateau = new plateau();   
+    setPlateauStartXCoordinates(currentPlateauInstance);
+    setPlateauEndXCoordinates(currentPlateauInstance,inputValue);
 
     it("should return undefined for setPlateauEndXCoordinates() >7 ", () => {
-        expect(getPlateauEndXCoordinates()).toBe(returnValue);
+        expect(getPlateauEndXCoordinates(currentPlateauInstance)).toBe(returnValue);
     });
 });
 
 describe("test set Plateau End Y Coordinates", () => {
     const inputValue = -1;
     const returnValue = undefined;
-    setPlateauEndYCoordinates(inputValue);
+
+    let currentPlateauInstance:plateau = new plateau();   
+    setPlateauStartXCoordinates(currentPlateauInstance);
+    setPlateauEndYCoordinates(currentPlateauInstance,inputValue);
 
     it("should return undefined for setPlateauEndYCoordinates() = -1", () => {
-        expect(getPlateauEndYCoordinates()).toBe(returnValue);
+        expect(getPlateauEndYCoordinates(currentPlateauInstance)).toBe(returnValue);
     });
 });
 
 describe("test set Plateau End Y Coordinates", () => {
     const inputValue = 6;
     const returnValue = undefined;
-    setPlateauEndYCoordinates(inputValue);
+
+    let currentPlateauInstance = plateauInit();
+    setPlateauStartXCoordinates(currentPlateauInstance);
+    setPlateauEndYCoordinates(currentPlateauInstance,inputValue);
 
     it("should return undefined for setPlateauEndYCoordinates() = 8", () => {
-        expect(getPlateauEndYCoordinates()).toBe(returnValue);
+        expect(getPlateauEndYCoordinates(currentPlateauInstance)).toBe(returnValue);
     });
 });
 

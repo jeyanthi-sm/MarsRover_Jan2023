@@ -3,10 +3,10 @@ import { printRoverWhereAbouts } from '../views/askRover';
 import { setRoverWhereAbouts, setRoverFacingDirection, getRoverWhereAbouts } from '../models/roverDetails';
 import { startRoverNavigation } from '../views/index';
 import { roverWhereAbouts } from '../models/roverDetails';
-import { marsPlateau } from '../models/plateau';
+import { getPlateauCoordinates, marsPlateau, plateau } from '../models/plateau';
 import { roverWhereAboutsCurrent } from '../models/roverDetails';
 
-export function haveRoverNavigate(inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent,instructions: string): void {
+export function haveRoverNavigate(inputPlateauRange:plateau=marsPlateau, inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent,instructions: string): void {
     for (let i = 0; i < instructions.length; ++i) {
         switch (instructions[i]) {
             case 'L': let endResultDir: string = rotateLeftRover(inputRoverclass);
@@ -15,7 +15,7 @@ export function haveRoverNavigate(inputRoverclass:roverWhereAbouts = roverWhereA
             case 'R': let endResultDirection: string = rotateRightRover(inputRoverclass);
                 setRoverFacingDirection(inputRoverclass,endResultDirection);
                 break;
-            case 'M': moveRover(inputRoverclass);
+            case 'M': moveRover(inputPlateauRange,inputRoverclass);
                 break;
         }
     }
@@ -41,17 +41,17 @@ export function rotateRightRover(inputRoverclass:roverWhereAbouts = roverWhereAb
 }
 
 
-export function moveRover(inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent): roverWhereAbouts {
+export function moveRover(inputPlateauRange:plateau=marsPlateau, inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent): roverWhereAbouts {
     const roverFacingDirection: string = inputRoverclass.facingDirection;
     let proposedRoverWhereAbouts: roverWhereAbouts = new roverWhereAbouts();
     switch (roverFacingDirection) {
-        case 'N': northMove(inputRoverclass);
+        case 'N': northMove(inputPlateauRange,inputRoverclass);
             break;
-        case 'S': southMove(inputRoverclass);
+        case 'S': southMove(inputPlateauRange,inputRoverclass);
             break;
-        case 'E': eastMove(inputRoverclass);
+        case 'E': eastMove(inputPlateauRange,inputRoverclass);
             break;
-        case 'W': westMove(inputRoverclass);
+        case 'W': westMove(inputPlateauRange,inputRoverclass);
             break;
     }
     proposedRoverWhereAbouts = getRoverWhereAbouts();
@@ -59,35 +59,35 @@ export function moveRover(inputRoverclass:roverWhereAbouts = roverWhereAboutsCur
 
 }
 
-export function northMove(inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent):void {
+export function northMove(inputPlateauRange:plateau=marsPlateau, inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent):void {
     const newRoverYCoordinatesval: number = inputRoverclass.ycoordinates as number;
     let proposedRoverYCoordinatesVal: number = newRoverYCoordinatesval + 1;
-    if (proposedRoverYCoordinatesVal >= marsPlateau.startRangeYCoordinates &&
-        proposedRoverYCoordinatesVal <= marsPlateau.endRangeYCoordinates)
+    if (proposedRoverYCoordinatesVal >= inputPlateauRange.startRangeYCoordinates &&
+        proposedRoverYCoordinatesVal <= inputPlateauRange.endRangeYCoordinates)
         setRoverWhereAbouts(inputRoverclass,inputRoverclass.xcoordinates, proposedRoverYCoordinatesVal, 'N');
 }
 
-export function southMove(inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent) : void {
+export function southMove(inputPlateauRange:plateau=marsPlateau, inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent) : void {
     const newRoverYCoordinatesval: number = inputRoverclass.ycoordinates as number;
     let proposedRoverYCoordinatesVal: number = newRoverYCoordinatesval - 1;
-    if (proposedRoverYCoordinatesVal >= marsPlateau.startRangeYCoordinates &&
-        proposedRoverYCoordinatesVal <= marsPlateau.endRangeYCoordinates)
+    if (proposedRoverYCoordinatesVal >= inputPlateauRange.startRangeYCoordinates &&
+        proposedRoverYCoordinatesVal <= inputPlateauRange.endRangeYCoordinates)
         setRoverWhereAbouts(inputRoverclass,inputRoverclass.xcoordinates, proposedRoverYCoordinatesVal, 'S');
 
 }
 
-export function eastMove(inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent ): void {
+export function eastMove(inputPlateauRange:plateau=marsPlateau, inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent ): void {
     const newRoverXCoordinatesval: number = inputRoverclass.xcoordinates as number;
     let proposedRoverXCoordinatesVal: number = newRoverXCoordinatesval + 1;
-    if (proposedRoverXCoordinatesVal >= marsPlateau.startRangeXCoordinates &&
-        proposedRoverXCoordinatesVal <= marsPlateau.endRangeXCoordinates)
+    if (proposedRoverXCoordinatesVal >= inputPlateauRange.startRangeXCoordinates &&
+        proposedRoverXCoordinatesVal <= inputPlateauRange.endRangeXCoordinates)
         setRoverWhereAbouts(inputRoverclass,proposedRoverXCoordinatesVal, inputRoverclass.ycoordinates, 'E');
 }
-export function westMove(inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent): void {
+export function westMove(inputPlateauRange:plateau=marsPlateau, inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent): void {
     const marsPlateauStartXcoordinates = marsPlateau.startRangeXCoordinates as number;
     const newRoverXCoordinatesval: number = inputRoverclass.xcoordinates as number;
     const proposedRoverXCoordinatesVal: number = inputRoverclass.xcoordinates - 1;
-    if (proposedRoverXCoordinatesVal >= marsPlateau.startRangeXCoordinates &&
-        proposedRoverXCoordinatesVal <= marsPlateau.endRangeXCoordinates)
+    if (proposedRoverXCoordinatesVal >= inputPlateauRange.startRangeXCoordinates &&
+        proposedRoverXCoordinatesVal <= inputPlateauRange.endRangeXCoordinates)
         setRoverWhereAbouts(inputRoverclass,proposedRoverXCoordinatesVal, inputRoverclass.ycoordinates, 'W');
 }

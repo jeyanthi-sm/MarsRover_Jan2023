@@ -44,7 +44,7 @@ export function inputValidation(inp: string): boolean {
 function inputValidationXCoordinates(inp: string): void {
     if (inputValidation(inp)) {
         setPlateauStartXCoordinates();
-        if (setPlateauEndXCoordinates(parseInt(inp)))
+        if (setPlateauEndXCoordinates(marsPlateau,parseInt(inp)))
             return askPlateauEndYCoordinates('Y');
         else
             endMarsNavigation();
@@ -58,7 +58,7 @@ function inputValidationXCoordinates(inp: string): void {
 function inputValidationYCoordinates(inp: string): void {
     if (inputValidation(inp)) {
         setPlateauStartXCoordinates();
-        if (setPlateauEndYCoordinates(parseInt(inp))) {
+        if (setPlateauEndYCoordinates(marsPlateau,parseInt(inp))) {
             printPlateauCoordinates();
             return askRoverXCoordinates();
         }
@@ -71,8 +71,8 @@ function inputValidationYCoordinates(inp: string): void {
 }
 
 
-export function printPlateauCoordinates() {
+export function printPlateauCoordinates(inputPlateauClass:plateau=marsPlateau) {
     clear(true);
     print('Plateau Coordinates');
-    print(`${marsPlateau.endRangeXCoordinates}  ${marsPlateau.endRangeYCoordinates}   `);
+    print(`${inputPlateauClass.endRangeXCoordinates}  ${inputPlateauClass.endRangeYCoordinates}   `);
 }

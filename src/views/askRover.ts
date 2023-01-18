@@ -27,7 +27,7 @@ function inputValidationRoverInstructions(inp: string): void {
     const strPattern = new RegExp(/^[lrm]+$/, 'gi');
     const matchPattern = strPattern.test(inp);
     if (matchPattern)
-        haveRoverNavigate(undefined,inp.toUpperCase());
+        haveRoverNavigate(marsPlateau,roverWhereAboutsCurrent,inp.toUpperCase());
     else
         endMarsNavigation();
 }
@@ -89,7 +89,7 @@ function inputValidationRoverFacingDirection(inp: string): void {
     const strPattern = new RegExp(/^[news]+$/, 'gi');
     const matchPattern = strPattern.test(inp);
     if (matchPattern) {
-        setRoverFacingDirection(undefined,inp.toUpperCase());
+        setRoverFacingDirection(roverWhereAboutsCurrent,inp.toUpperCase());
         clear(true);
         printPlateauCoordinates();
         printRoverWhereAbouts();
