@@ -1,5 +1,5 @@
 import { askQuestion, clear, print } from '../views/console';
-import { endMarsNavigation,startRoverNavigation } from '../views/index';
+import { endMarsNavigation,startRoverNavigation } from './index';
 import { plateau, marsPlateau, PLATEAU_END_RANGE, PLATEAU_START_RANGE } from '../models/plateau';
 import { setPlateauStartXCoordinates, setPlateauStartYCoordinates,setPlateauEndXCoordinates, setPlateauEndYCoordinates } from '../models/plateau';
 import { askRoverXCoordinates } from '../views/askRover';

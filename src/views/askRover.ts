@@ -1,6 +1,6 @@
 import { clear, print, askQuestion } from '../views/console'
 import { marsPlateau } from '../models/plateau';
-import { endMarsNavigation, startRoverNavigation } from '../views/index';
+import { endMarsNavigation, startRoverNavigation } from './index';
 import { printPlateauCoordinates } from './askPlateau';
 import { setRoverYCoordinates, setRoverXCoordinates, setRoverFacingDirection } from '../models/roverDetails';
 import { roverWhereAboutsCurrent } from '../models/roverDetails';
@@ -27,7 +27,7 @@ function inputValidationRoverInstructions(inp: string): void {
     const strPattern = new RegExp(/^[lrm]+$/, 'gi');
     const matchPattern = strPattern.test(inp);
     if (matchPattern)
-        haveRoverNavigate(inp.toUpperCase());
+        haveRoverNavigate(undefined,inp.toUpperCase());
     else
         endMarsNavigation();
 }
@@ -49,7 +49,7 @@ function inputValidationForRoverXCoordinates(inp: string): void {
     }
 
     if (typeinp <= marsPlateau.endRangeXCoordinates) {
-        setRoverXCoordinates(typeinp);
+        setRoverXCoordinates(undefined,typeinp);
         return askRoverYCoordinates();
     }
     else
@@ -75,7 +75,7 @@ function inputValidationForRoverYCoordinates(inp: string): void {
     }
 
     if (typeinp <= marsPlateau.endRangeYCoordinates) {
-        setRoverYCoordinates(typeinp);
+        setRoverYCoordinates(undefined,typeinp);
         return askRoverFacingDirection();
     }
     else
@@ -89,7 +89,7 @@ function inputValidationRoverFacingDirection(inp: string): void {
     const strPattern = new RegExp(/^[news]+$/, 'gi');
     const matchPattern = strPattern.test(inp);
     if (matchPattern) {
-        setRoverFacingDirection(inp.toUpperCase());
+        setRoverFacingDirection(undefined,inp.toUpperCase());
         clear(true);
         printPlateauCoordinates();
         printRoverWhereAbouts();
@@ -101,9 +101,9 @@ function inputValidationRoverFacingDirection(inp: string): void {
 }
 
 
-export function printRoverWhereAbouts(): void {
+export function printRoverWhereAbouts(inpRoverWhereAbouts:roverWhereAbouts = roverWhereAboutsCurrent): void {
     print('    Rover WhereAbouts    ');
-    print(`${roverWhereAboutsCurrent.xcoordinates}  ${roverWhereAboutsCurrent.ycoordinates}  ${roverWhereAboutsCurrent.facingDirection}`);
+    print(`${inpRoverWhereAbouts.xcoordinates}  ${inpRoverWhereAbouts.ycoordinates}  ${inpRoverWhereAbouts.facingDirection}`);
 }
 
 
