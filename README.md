@@ -18,6 +18,12 @@ You can then run
 
 npm start
 
+Then you can run
+
+npm test
+
+followed by npm run build
+
 
 ❗ NOTE: If you look in `package.json` you'll see that `npm start` is actually just an alias for `nodemon index.ts`. Using the [nodemon tool](https://www.npmjs.com/package/nodemon) means you don't have to stop and start the application every time you change the code. Nodemon will automatically spot when files have changed and restart your application. 
 
