@@ -12,52 +12,63 @@ export class roverWhereAbouts {
     }
 };
 
-export let roverWhereAboutsCurrent: roverWhereAbouts = new roverWhereAbouts();
-
-export function setRoverWhereAbouts(xCoordinates: number, ycoordinates: number, facingDirection: string): void {
-    setRoverXCoordinates(xCoordinates);
-    setRoverYCoordinates(ycoordinates);
-    setRoverFacingDirection(facingDirection);
+export function roverWhereAboutsInit(): roverWhereAbouts {
+    const outputRoverClass: roverWhereAbouts = new roverWhereAbouts();
+    return outputRoverClass;
 }
 
-export function setRoverXCoordinates(xCoordinates: number): boolean {
+export let roverWhereAboutsCurrent: roverWhereAbouts = new roverWhereAbouts();
+
+export function setRoverWhereAbouts(inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent,xCoordinates: number, ycoordinates: number, facingDirection: string): void {
+    setRoverXCoordinates(inputRoverclass,xCoordinates);
+    setRoverYCoordinates(inputRoverclass,ycoordinates);
+    setRoverFacingDirection(inputRoverclass,facingDirection);
+}
+
+export function setRoverXCoordinates(inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent,xCoordinates: number): boolean {
     if (xCoordinates >= PLATEAU_START_RANGE && xCoordinates <= PLATEAU_END_RANGE) {
-        roverWhereAboutsCurrent.xcoordinates! = xCoordinates;
+        inputRoverclass.xcoordinates = xCoordinates;
         return true;
     }
     else
     {
-        roverWhereAboutsCurrent.xcoordinates! = 0;
+        inputRoverclass.xcoordinates = 0;
         return false;
     }
 
 }
 
-export function setRoverYCoordinates(yCoordinates: number): boolean {
+export function setRoverYCoordinates(inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent,yCoordinates: number): boolean {
     if (yCoordinates >= PLATEAU_START_RANGE && yCoordinates <= PLATEAU_END_RANGE)
     {
-    roverWhereAboutsCurrent.ycoordinates! = yCoordinates;
+    inputRoverclass.ycoordinates = yCoordinates;
     return true;
     }
     else
     {
-        roverWhereAboutsCurrent.ycoordinates! = 0;
+        inputRoverclass.ycoordinates = 0;
         return false;
     }
 }
 
 
-export function setRoverFacingDirection(inpDirection: string) {
+export function setRoverFacingDirection(inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent,inpDirection: string):boolean {
     const strPattern = new RegExp(/^[nesw]+$/, 'gi');
     const matchPattern = strPattern.test(inpDirection);
     if (matchPattern)
-        roverWhereAboutsCurrent.facingDirection = inpDirection.toUpperCase();
+    {
+        inputRoverclass.facingDirection = inpDirection.toUpperCase();
+        return true;
+    }
     else
-        roverWhereAboutsCurrent.facingDirection = "";
+    {
+        inputRoverclass.facingDirection = "";
+        return false;
+    }
 }
 
 
 
-export function getRoverWhereAbouts(): roverWhereAbouts {
-    return roverWhereAboutsCurrent;
+export function getRoverWhereAbouts(inputRoverclass:roverWhereAbouts = roverWhereAboutsCurrent,): roverWhereAbouts {
+    return inputRoverclass;
 }

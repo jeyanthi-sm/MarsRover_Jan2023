@@ -34,17 +34,6 @@ describe("test set Plateau End X Coordinates", () => {
 });
 
 describe("test set Plateau End X Coordinates", () => {
-    const inputValue = 2;
-    const returnValue = 2;
-    setPlateauEndXCoordinates(inputValue);
-
-    it("should return undefined for setPlateauEndXCoordinates() -1 ", () => {
-        expect(getPlateauEndXCoordinates()).toBe(returnValue);
-    });
-});
-
-
-describe("test set Plateau End X Coordinates", () => {
     const inputValue = 6;
     const returnValue = undefined;
     setPlateauEndXCoordinates(inputValue);
